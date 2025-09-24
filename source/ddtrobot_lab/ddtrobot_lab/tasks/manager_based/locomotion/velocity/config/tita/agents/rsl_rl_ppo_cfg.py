@@ -5,7 +5,7 @@ from isaaclab_rl.rsl_rl import RslRlOnPolicyRunnerCfg, RslRlPpoActorCriticCfg, R
 @configclass
 class DDTRobotTitaRoughPPORunnerCfg(RslRlOnPolicyRunnerCfg):
     num_steps_per_env = 24
-    max_iterations = 40000
+    max_iterations = 30000
     save_interval = 100
     experiment_name = "ddtrobot_tita_rough"
     policy = RslRlPpoActorCriticCfg(
