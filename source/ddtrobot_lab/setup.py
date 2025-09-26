@@ -18,6 +18,7 @@ INSTALL_REQUIRES = [
     "numpy",
     "pandas",
     "pinocchio",
+    "noise",
 ]
 
 # Installation operation

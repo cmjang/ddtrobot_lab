@@ -11,6 +11,7 @@ title = "RL Extension Library for Robots, Based on IsaacLab."
 author = "DDTRobot"
 maintainer = "DDTRobot"
 description="RL Extension Library for Robots, Based on IsaacLab."
+repository = "https://github.com/cmjang/ddtrobot_lab.git"
 keywords = ["extension", "ddtrobot_lab", "isaaclab"]
 
 [dependencies]
