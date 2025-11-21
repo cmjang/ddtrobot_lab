@@ -124,10 +124,10 @@ class ActionsCfg:
         asset_name="robot", joint_names=[".*"], scale=0.5, use_default_offset=True, clip=None, preserve_order=True
     )
 
-
 @configclass
 class ObservationsCfg:
     """Observation specifications for the MDP."""
+
 
     @configclass
     class PolicyCfg(ObsGroup):
@@ -238,7 +238,11 @@ class ObservationsCfg:
             clip=(-1.0, 1.0),
             scale=1.0,
         )
-
+        # joint_effort = ObsTerm(
+        #     func=mdp.joint_effort,
+        #     clip=(-100, 100),
+        #     scale=0.01,
+        # )
 
         def __post_init__(self):
             self.enable_corruption = False
@@ -259,35 +263,32 @@ class EventCfg:
         mode="startup",
         params={
             "asset_cfg": SceneEntityCfg("robot", body_names=".*"),
-            "static_friction_range": (0.3, 1.0),
-            "dynamic_friction_range": (0.3, 0.8),
+            "static_friction_range": (0.1, 1.0),
+            "dynamic_friction_range": (0.1, 0.8),
             "restitution_range": (0.0, 0.5),
             "num_buckets": 64,
         },
     )
 
-    randomize_rigid_body_mass_base = EventTerm(
+    randomize_rigid_body_mass = EventTerm(
         func=mdp.randomize_rigid_body_mass,
         mode="startup",
         params={
             "asset_cfg": SceneEntityCfg("robot", body_names=""),
             "mass_distribution_params": (-1.0, 3.0),
             "operation": "add",
-            "recompute_inertia": True,
         },
     )
 
-    randomize_rigid_body_mass_others = EventTerm(
-        func=mdp.randomize_rigid_body_mass,
+    randomize_rigid_body_inertia = EventTerm(
+        func=mdp.randomize_rigid_body_inertia,
         mode="startup",
         params={
             "asset_cfg": SceneEntityCfg("robot", body_names=".*"),
-            "mass_distribution_params": (0.7, 1.3),
+            "inertia_distribution_params": (0.5, 1.5),
             "operation": "scale",
-            "recompute_inertia": True,
         },
     )
-
 
     randomize_com_positions = EventTerm(
         func=mdp.randomize_rigid_body_com,
@@ -327,7 +328,7 @@ class EventCfg:
             "stiffness_distribution_params": (0.5, 2.0),
             "damping_distribution_params": (0.5, 2.0),
             "operation": "scale",
-            "distribution": "uniform",
+            "distribution": "log_uniform",
         },
     )
 

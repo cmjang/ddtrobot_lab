@@ -10,7 +10,7 @@
 
 ## Overview
 
-This project is a reinforcement learning repository developed for **Direct Drive Technology Robotics**, built upon NVIDIA **[IsaacLab](https://github.com/isaac-sim/IsaacLab)**. It currently supports the **[Tita Robot](https://tita-development-manual-uc.readthedocs.io/)** and is compatible with **Isaac Sim 5.0 (recommended)** and Isaac Sim 4.5.
+This project is a reinforcement learning repository developed for **Direct Drive Technology Robotics**, built upon NVIDIA **[IsaacLab](https://github.com/isaac-sim/IsaacLab)**. It currently supports the **[Tita Robot](https://tita-development-manual-uc.readthedocs.io/)** and is compatible with **IsaacLab 2.2.1** and **Isaac Sim 5.0 (recommended)** or **Isaac Sim 4.5**.
 
 <div align="center">
 
@@ -53,7 +53,7 @@ This project is a reinforcement learning repository developed for **Direct Drive
 
 3. **Install ddtrobot lab**
 
-   Enter the environment where **Isaac Lab 2.2** is installed.
+   Enter the environment where **Isaac Lab 2.2.1** is installed.
 
    ```bash
    cd ddtrobot_lab
@@ -79,21 +79,6 @@ This project is a reinforcement learning repository developed for **Direct Drive
    python scripts/rsl_rl/play.py --task=DDTRobotLab-Velocity-Flat-Tita-v0
    ```
 
-2. **Tita use LSTM**
-
-   ```bash
-   # Train Rough
-   python scripts/rsl_rl/train.py --task=DDTRobotLab-Velocity-Rough-Tita-LSTM-v0 --headless
-   
-   # Play Rough
-   python scripts/rsl_rl/play.py --task=DDTRobotLab-Velocity-Rough-Tita-LSTM-v0
-   
-   # Train Flat
-   python scripts/rsl_rl/train.py --task=DDTRobotLab-Velocity-Flat-Tita-LSTM-v0 --headless
-   
-   # Play Flat
-   python scripts/rsl_rl/play.py --task=DDTRobotLab-Velocity-Flat-Tita-LSTM-v0
-   ```
 
 3. **Tensorboard**
 
