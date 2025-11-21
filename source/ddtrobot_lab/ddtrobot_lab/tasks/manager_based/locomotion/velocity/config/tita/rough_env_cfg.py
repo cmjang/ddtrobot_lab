@@ -34,7 +34,7 @@ ROUGH_ROAD_CFG = terrain_gen.TerrainGeneratorCfg(
         #     proportion=0.5,obstacle_width_range=(0.05, 0.2), obstacle_height_range=(0.02, 0.06),
         # ),
         "random_rough": terrain_gen.HfRandomUniformTerrainCfg(
-            proportion=0.2, noise_range=(0.02, 0.08), noise_step=0.02, border_width=0.25
+            proportion=0.2, noise_range=(0.01, 0.02), noise_step=0.02, border_width=0.25
         ),
     },
 )
@@ -143,7 +143,7 @@ class DDTRobotTitaRoughEnvCfg(LocomotionVelocityRoughEnvCfg):
         self.rewards.lin_vel_z_l2.weight = -2.0
         self.rewards.ang_vel_xy_l2.weight = -0.05
         self.rewards.flat_orientation_l2.weight = -1.0
-        self.rewards.base_height_l2.weight = -5.0
+        self.rewards.base_height_l2.weight = -2.0
         self.rewards.base_height_l2.params["target_height"] = 0.35
         self.rewards.base_height_l2.params["asset_cfg"].body_names = [self.base_link_name]
         self.rewards.body_lin_acc_l2.weight = 0
@@ -168,9 +168,9 @@ class DDTRobotTitaRoughEnvCfg(LocomotionVelocityRoughEnvCfg):
         self.rewards.joint_vel_limits.params["asset_cfg"].joint_names = self.wheel_joint_names
         self.rewards.joint_power.weight = -2e-5
         self.rewards.joint_power.params["asset_cfg"].joint_names = self.leg_joint_names
-        self.rewards.stand_still.weight = -2.0
+        self.rewards.stand_still.weight = -1.0
         self.rewards.stand_still.params["asset_cfg"].joint_names = self.leg_joint_names
-        self.rewards.joint_pos_penalty.weight = -2.0
+        self.rewards.joint_pos_penalty.weight = -1.0
         self.rewards.joint_pos_penalty.params["asset_cfg"].joint_names = self.leg_joint_names
         self.rewards.joint_pos_penalty.params["velocity_threshold"] = 100
         self.rewards.wheel_vel_penalty.weight = -0.04
@@ -211,7 +211,7 @@ class DDTRobotTitaRoughEnvCfg(LocomotionVelocityRoughEnvCfg):
         self.rewards.feet_height_body.params["target_height"] = -0.2
         self.rewards.feet_height_body.params["asset_cfg"].body_names = [self.foot_link_name]
         self.rewards.upward.weight = 1.0
-        self.rewards.feet_distance_y_exp.weight = -3.0
+        self.rewards.feet_distance_y_exp.weight = -1.0
         self.rewards.feet_distance_y_exp.params["stance_width"] = 0.6
         self.rewards.feet_distance_y_exp.params["asset_cfg"].body_names = [self.foot_link_name]
 
